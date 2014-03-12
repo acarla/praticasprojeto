@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Cabecalho</title>
+    </h:head>
+    <h:body>
+        <div id="topo">
+             
+            <h:form><h:commandLink action="#{autenticaMB.encerrarSessao}" styleClass="logout" value="Logout"/></h:form>
+            <h1>Biblioteca Pratica</h1>           
+            <ul>
+                <li><a href="index.jsf">Home</a></li>
+                <li><a href="edital.jsf">Edital</a></li>
+                <li><a href="bolsista.jsf">Bolsista</a></li> 
+                <li><a href="professor.jsf">Professor</a></li>
+                <li><a href="projeto.jsf">Projeto</a></li>
+            </ul>
+        </div>
+
+        <ui:insert name="corpo"></ui:insert>
+    </h:body>
+</html>

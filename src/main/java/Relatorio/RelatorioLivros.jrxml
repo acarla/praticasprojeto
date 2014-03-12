@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioLivros" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8a309ffc-b148-4b59-b9fc-bb2230f3d947">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from livro]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="ISBN" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="42dcf73b-9064-40f2-8b31-184419b47df3" x="187" y="26" width="118" height="24"/>
+				<textElement markup="none">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatorio de Livros]]></text>
+			</staticText>
+			<image>
+				<reportElement uuid="ee243402-f4d1-46ef-bf06-ae250cd5fdf9" x="461" y="26" width="42" height="47"/>
+				<imageExpression><![CDATA["C:\\Users\\Ana\\Documents\\NetBeansProjects\\PraticasProjeto\\src\\main\\java\\Relatorio\\imagem_topo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="52dd86f3-2c19-46e0-add0-a95ab91d4aee" x="47" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e988ea82-fb9b-4ea3-9063-6548723cea25" x="213" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[titulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8ec2fb14-fb46-44aa-bd02-05eff9c81d2b" x="403" y="2" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ISBN]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f793c928-c74a-4434-9f8d-179f0eb480f0" x="47" y="5" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b3dc0f9c-bcb2-4ba4-bbde-5dec133facdc" x="403" y="8" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{ISBN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="281d5a7e-a15d-44aa-b6d5-f832b7edaf7a" x="213" y="5" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
