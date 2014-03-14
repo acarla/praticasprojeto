@@ -4,6 +4,7 @@
  */
 package managerBeans;
 
+import DAO.LivroBean;
 import entidades.Livro;
 import interfaces.ILivro;
 import java.util.List;
@@ -15,7 +16,7 @@ import javax.faces.bean.ViewScoped;
  *
  * @author Ana
  */
-@ManagedBean(name="LivroMB1")
+@ManagedBean(name="livroMB")
 @ViewScoped
 public class LivroMB {
     private boolean cadastrar = false;
@@ -24,8 +25,7 @@ public class LivroMB {
     
     private Livro livro = new Livro();
     
-    @EJB
-    private ILivro livros;
+    private ILivro livros = new LivroBean();
 
     public LivroMB() {
     }

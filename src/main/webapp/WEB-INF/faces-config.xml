@@ -11,5 +11,16 @@
     <lifecycle>
         <phase-listener>filtro.Autenticacao</phase-listener>
     </lifecycle>
+    
+      <application>
+        <resource-bundle>
+            <base-name>messages.bundles.mensagens</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+        <locale-config>
+            <default-locale>pt</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+    </application>
 
 </faces-config>

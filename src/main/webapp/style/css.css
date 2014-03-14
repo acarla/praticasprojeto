@@ -1,0 +1,16 @@
+/* 
+    Document   : css
+    Created on : 13/03/2014, 23:21:10
+    Author     : Ana
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body {}
+ul {display:table;}
+ul li {display: inline-block;margin-left:20px;}
+ul li a {padding:20px;float:left;background:#999;color:#fff;}

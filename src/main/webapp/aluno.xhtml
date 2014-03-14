@@ -14,76 +14,60 @@
        
         <div id="principal">
             <h:form id="menu">
-                <h:commandLink action="#{alunoMB1.telaCadastrar()}" value="Cadastrar Aluno" styleClass="link"/>
-                <h:commandLink action="#{alunoMB1.telaListar()}" value="Listar Aluno" styleClass="link"/>
-                <h:commandLink action="#{alunoMB1.telaListar()}" value="Editar Aluno" styleClass="link"/>
-                <h:commandLink action="#{alunoMB1.telaListar()}" value="Remover Aluno" styleClass="link"/>
+                <h:commandLink action="#{alunoMB.telaCadastrar()}" value="Cadastrar Aluno" styleClass="link"/>
+                <h:commandLink action="#{alunoMB.telaListar()}" value="Listar Aluno" styleClass="link"/>
+                <h:commandLink action="#{alunoMB.telaListar()}" value="Editar Aluno" styleClass="link"/>
+                <h:commandLink action="#{alunoMB.telaListar()}" value="Remover Aluno" styleClass="link"/>
             </h:form>
 
             <div id="formulario"  >   
                 <!-- Cadastro -->
-                <h:form id="Eform"  rendered="#{alunoMB1.cadastrar}">
+                <h:form id="Eform"  rendered="#{alunoMB.cadastrar}">
                     <h2>Cadastro</h2>
                     <h:messages globalOnly="true" />
                     <h:panelGrid columns="3">
 
                         <h:outputLabel value="Nome: " />
-                        <p:inputText  id="nome" value="#{alunoMB1.aluno.nome}" required="true" requiredMessage="Campo Obrigatório !" />
+                        <p:inputText  id="nome" value="#{alunoMB.aluno.nome}" required="true" requiredMessage="Campo Obrigatório !" />
                         <h:message for="nome" />
 
                         <h:outputLabel value="Email :" />
-                        <p:inputText id="email" value="#{alunoMB1.aluno.email}" required="true" requiredMessage="Campo Obrigatório !"/>
+                        <p:inputText id="email" value="#{alunoMB.aluno.email}" required="true" requiredMessage="Campo Obrigatório !" validator="validaEmail" />
                         <h:message for="email" />
                         
                         <h:outputLabel value="matricula :" />
-                        <p:inputText id="matricula" value="#{alunoMB1.aluno.matricula}" required="true" requiredMessage="Campo Obrigatório !"/>
+                        <p:inputText id="matricula" size="3" value="#{alunoMB.aluno.matricula}" required="true" requiredMessage="Campo Obrigatório !"/>
                         <h:message for="matricula" />
                         
-                        <h:commandButton value="Enviar" action="#{alunoMB1.addAluno()}" />  
+                       
+                        
+                        <h:commandButton value="Enviar" action="#{alunoMB.addAluno()}" />  
                     </h:panelGrid>
 
                 </h:form>
                 <!-- Cadastro -->
                 <!-- Listar-->
-                <h:form id="formlistar" rendered="#{alunoMB1.listar}">
+                <h:form id="formlistar" rendered="#{alunoMB.listar}">
 
-                    <h:dataTable value="#{alunoMB1.listaraluno()}" var="aluno">
-
+                    <h:dataTable value="#{alunoMB.listaAlunos()}" var="aluno">
                         <h:column>
                             <f:facet name= "header"><h:outputText value="Nome" /></f:facet>
                             <h:outputText value="#{aluno.nome}" />
                         </h:column>
-
                         <h:column>
-                            <f:facet name="header"><h:outputText value="email" /></f:facet>
-                            <h:outputText value="#{aluno.email}" />
+                            <f:facet name= "header"><h:outputText value="Email" /></f:facet>
+                            <h:outputText value="#{aluno}" converter="#{alunoMB.alunoConverter}"/>
                         </h:column>
-                        
-                        <h:column>
-                            <f:facet name="header"><h:outputText value="matricula" /></f:facet>
-                            <h:outputText value="#{aluno.matricula}" />
-                        </h:column>
-
-                        <p:column headerText="Ações" style="width:25%">
-                            <h:commandButton action="#{alunoMB1.telaEditar()}" value="Editar" styleClass="bt2" >
-                                <f:setPropertyActionListener value="#{aluno}" target="#{alunoMB1.aluno}"/>
-                            </h:commandButton>
-                        </p:column>
-                        <p:column>
-                            <h:commandButton action="#{alunoMB1.removelivro()}" value="Excluir" styleClass="bt2">
-                                <f:setPropertyActionListener value="#{aluno}" target="#{alunoMB1.aluno}"/>
-                            </h:commandButton>
-                        </p:column>
                     </h:dataTable>
                 </h:form>
                 <!-- Listar -->
                 <!-- Editar -->
-                <h:form id="formeditar" rendered="#{alunoMB1.editar}">
+                <h:form id="formeditar" rendered="#{alunoMB.editar}">
                     <h2>Editar</h2>
                     <h:messages globalOnly="true" />
                     <h:panelGrid columns="3">
                         <h:outputLabel value="Nome:" />
-                        <p:inputText id="nome" value="#{alunoMB1.aluno.nome}" required="true" requiredMessage="Campo Obrigatório" />
+                        <p:inputText id="nome" value="#{alunoMB.aluno.nome}" required="true" requiredMessage="Campo Obrigatório" />
                         <h:message for="nome" />
 
                         <h:outputLabel value="email :" />

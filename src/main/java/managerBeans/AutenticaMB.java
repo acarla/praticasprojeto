@@ -4,25 +4,25 @@
  */
 package managerBeans;
 
+import DAO.UsuarioBean;
 import entidades.Usuario;
-import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author Ana
  */
-@ManagedBean
-@RequestScoped
+@ManagedBean(name = "autenticaMB")
+@SessionScoped
 public class AutenticaMB {
 
     private Usuario usuarioLogado = new Usuario();
     
-    @EJB
-    private Usuario usuarioManager;
+    private UsuarioBean usuarioManager = new UsuarioBean();
     
     public String autenticar() {
         
@@ -43,10 +43,10 @@ public class AutenticaMB {
     }
     
     public String encerrarSessao() {
-        
-        usuarioLogado = new Usuario();
-        return "/login.jsf";
-        
+        this.usuarioLogado = null;
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        request.getSession().invalidate();
+        return "login.jsf";
     }
 
     public Usuario getUsuarioLogado() {

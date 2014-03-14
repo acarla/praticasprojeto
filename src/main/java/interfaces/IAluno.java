@@ -12,7 +12,10 @@ import java.util.List;
  * @author Ana
  */
 public interface IAluno {
+    
     public Aluno retornarAluno(Long id);
+
+    public Aluno retornarAlunoPorEmail(String email);
     
     public List<Aluno> listarAluno();
    

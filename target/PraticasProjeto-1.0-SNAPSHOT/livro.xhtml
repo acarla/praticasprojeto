@@ -14,35 +14,35 @@
         <ui:include src="/cabecalho.xhtml" />
         <div id="principal">
             <h:form id="menu">
-                <h:commandLink action="#{livroMB1.telaCadastrar()}" value="Cadastrar livro" styleClass="link"/>
-                <h:commandLink action="#{livroMB1.telaListar()}" value="Listar livro" styleClass="link"/>
-                <h:commandLink action="#{livroMB1.telaListar()}" value="Editar livro" styleClass="link"/>
-                <h:commandLink action="#{livroMB1.telaListar()}" value="Remover livro" styleClass="link"/>
+                <h:commandLink action="#{livroMB.telaCadastrar()}" value="Cadastrar livro" styleClass="link"/>
+                <h:commandLink action="#{livroMB.telaListar()}" value="Listar livro" styleClass="link"/>
+                <h:commandLink action="#{livroMB.telaListar()}" value="Editar livro" styleClass="link"/>
+                <h:commandLink action="#{livroMB.telaListar()}" value="Remover livro" styleClass="link"/>
             </h:form>
 
             <div id="formulario"  >   
                 <!-- Cadastro -->
-                <h:form id="Eform" rendered="#{livroMB1.cadastrar}">
+                <h:form id="Eform" rendered="#{livroMB.cadastrar}">
                     <h2>Cadastro</h2>
                     <h:messages globalOnly="true" />
                     <h:panelGrid columns="3">
                         <h:outputLabel value="Titulo:" for="titulop" />
-                        <p:inputText id="titulop" value="#{livroMB1.livro.titulo}" required="true" requiredMessage="Campo Obrigatório" />
+                        <p:inputText id="titulop" value="#{livroMB.livro.titulo}" required="true" requiredMessage="Campo Obrigatório" />
                         <h:message for="titulop" />
 
                         <h:outputLabel value="ISBN :" />
-                        <p:inputText id="ISBN" value="#{livroMB1.livro.ISBN}" required="true" requiredMessage="Campo Obrigatório"/>
+                        <p:inputText id="ISBN" value="#{livroMB.livro.ISBN}" required="true" requiredMessage="Campo Obrigatório"/>
                         <h:message for="ISBN" />
 
-                        <h:commandButton value="Enviar" action="#{livroMB1.addLivro()}" />  
+                        <h:commandButton value="Enviar" action="#{livroMB.addLivro()}" />  
                     </h:panelGrid>
 
                 </h:form>
                 <!-- Cadastro -->
                 <!-- Listar-->
-                <h:form id="formlistar" rendered="#{livroMB1.listar}">
+                <h:form id="formlistar" rendered="#{livroMB.listar}">
 
-                    <h:dataTable value="#{livroMB1.listalivro()}" var="livro">
+                    <h:dataTable value="#{livroMB.listaLivros()}" var="livro">
 
                         <h:column>
                             <f:facet name= "header"><h:outputText value="Titulo" /></f:facet>
@@ -55,13 +55,13 @@
                         </h:column>
 
                         <p:column headerText="Ações" style="width:25%">
-                            <h:commandButton action="#{livroMB1.telaEditar()}" value="Editar" styleClass="bt2" >
-                                <f:setPropertyActionListener value="#{livro}" target="#{livroMB1.livro}"/>
+                            <h:commandButton action="#{livroMB.telaEditar()}" value="Editar" styleClass="bt2" >
+                                <f:setPropertyActionListener value="#{livro}" target="#{livroMB.livro}"/>
                             </h:commandButton>
                         </p:column>
                         <p:column>
-                            <h:commandButton action="#{livroMB1.removelivro()}" value="Excluir" styleClass="bt2">
-                                <f:setPropertyActionListener value="#{livro}" target="#{livroMB1.livro}"/>
+                            <h:commandButton action="#{livroMB.removelivro()}" value="Excluir" styleClass="bt2">
+                                <f:setPropertyActionListener value="#{livro}" target="#{livroMB.livro}"/>
                             </h:commandButton>
                         </p:column>
                     </h:dataTable>
@@ -73,15 +73,15 @@
                     <h:messages globalOnly="true" />
                     <h:panelGrid columns="3">
                         <h:outputLabel value="Titulo:" />
-                        <p:inputText id="titulo" value="#{livroMB1.livro.titulo}" required="true" requiredMessage="Campo Obrigatório" />
+                        <p:inputText id="titulo" value="#{livroMB.livro.titulo}" required="true" requiredMessage="Campo Obrigatório" />
                         <h:message for="titulo" />
 
                         <h:outputLabel value="ISNS :" />
-                        <p:inputText id="ISNS" value="#{livroMB1.livro.ISBN}" required="true" requiredMessage="Campo Obrigatório"/>
+                        <p:inputText id="ISNS" value="#{livroMB.livro.ISBN}" required="true" requiredMessage="Campo Obrigatório"/>
                         <h:message for="ISNS" />
 
                         
-                        <h:commandButton value="Atualizar" action="#{livroMB1.atualizaLivro()}" />
+                        <h:commandButton value="Atualizar" action="#{livroMB.atualizaLivro()}" />
                     </h:panelGrid>
                 </h:form>
                 <!-- Editar -->

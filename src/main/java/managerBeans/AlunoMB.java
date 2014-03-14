@@ -4,6 +4,7 @@
  */
 package managerBeans;
 
+import conversores.AlunoConverter;
 import entidades.Aluno;
 import interfaces.IAluno;
 import java.util.ArrayList;
@@ -11,15 +12,17 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.convert.Converter;
 import javax.faces.model.SelectItem;
 
 /**
  *
  * @author Ana
  */
-@ManagedBean(name ="alunoMB1")
+@ManagedBean(name ="alunoMB")
 @ViewScoped
 public class AlunoMB {
+    
     private boolean cadastrar = false;
     private boolean listar = false;
     private boolean editar = false;
@@ -29,7 +32,17 @@ public class AlunoMB {
     @EJB
     private IAluno alunos;
     
+    private Converter alunoConverter = new AlunoConverter(alunos);
+    
     public AlunoMB() {
+    }
+
+    public Converter getAlunoConverter() {
+        return alunoConverter;
+    }
+
+    public void setAlunoConverter(Converter alunoConverter) {
+        this.alunoConverter = alunoConverter;
     }
     
     public void telaCadastrar(){
